@@ -1,4 +1,4 @@
-FROM php:7.4-apache
+FROM php:8.1.16-apache
 RUN apt-get update
 RUN apt-get install -y wget unzip  libxml2-dev gnupg2
 RUN apt-get install -y zlib1g-dev libicu-dev g++ libwebp-dev libjpeg62-turbo-dev libpng-dev libxpm-dev libfreetype6-dev
@@ -18,9 +18,9 @@ RUN a2enmod rewrite
 
 WORKDIR /var/www
 
-RUN  wget https://open.vanillaforums.com/get/vanilla-core-2021.009.zip
+RUN  wget https://github.com/pggagnon/vanilla-forums/releases/download/2023.001-addons/vanilla-2023.001-addons.zip
 
-RUN unzip vanilla-core-2021.009.zip
+RUN unzip vanilla-2023.001-addons.zip
 RUN mv /var/www/package/* /var/www/html/
 WORKDIR /var/www/html/
 RUN wget https://github.com/vanilla/vanilla/raw/master/.htaccess.dist
